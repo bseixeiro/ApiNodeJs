@@ -1,5 +1,4 @@
 import Pokemon from "../model/pokemon.js";
-import findErrors from "../middleware/validator.js";
 import Controller from "./controller.js";
 
 class PokemonController extends Controller {
@@ -16,6 +15,19 @@ class PokemonController extends Controller {
             }
             );
     };
+
+    static getPokemon = (req, res) => {
+        const id = req.params.id;
+        Pokemon.findById(id)
+          .then((result) => {
+            res.json(result);
+          })
+          .catch((error) => {
+            console.log(error);
+            throw new Error(error);
+            // res.status(400).json({ message: error.message });
+          });
+      };
 
     static createPokemon = (request, response) => {
         const bodyContent = request.body;

@@ -6,6 +6,7 @@ import findErrors from "../middleware/validator.js";
 const router = express.Router();
 
 router.get("/", PokemonController.getAllPokemons);
+router.get("/:id", PokemonController.getPokemon);
 
 router.post("/", [
     body("pokedexNumber").trim().isInt(),
