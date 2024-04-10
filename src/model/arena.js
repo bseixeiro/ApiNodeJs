@@ -15,11 +15,11 @@ const arenaSchema = new Schema({
     required: true,
   },
   champion: {
-    name: String,
+    type: String,
     required: true,
   },
   badge: {
-    name: String,
+    type: String,
     required: true,
   },
 });

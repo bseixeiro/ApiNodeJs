@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-const pokemonSchema = new Schema({
+export const pokemonSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -19,6 +19,10 @@ const pokemonSchema = new Schema({
     type: Number,
     required: true,
   },
+  lvl: {
+    type: Number,
+    required: true
+  }
 });
 
 export default model("Pokemon", pokemonSchema);

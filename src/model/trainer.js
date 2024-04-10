@@ -13,15 +13,8 @@ const trainerSchema = new Schema({
   team : [
     {
       pokemon: String,
-      lvl: Number,
     }
   ],
-  badge: [
-    {
-      name: String,
-      Arena: String
-    }
-  ]
 });
 
 export default model("Trainer", trainerSchema);
