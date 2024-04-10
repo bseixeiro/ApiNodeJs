@@ -15,6 +15,10 @@ const pokemonSchema = new Schema({
     type: Number,
     required: true,
   },
+  pokedexNumber: {
+    type: Number,
+    required: true,
+  },
   evolution: {
     name: String,
     lvl:  Number
