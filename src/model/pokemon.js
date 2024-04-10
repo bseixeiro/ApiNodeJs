@@ -19,10 +19,6 @@ const pokemonSchema = new Schema({
     type: Number,
     required: true,
   },
-  evolution: {
-    name: String,
-    lvl:  Number
-  }
 });
 
 export default model("Pokemon", pokemonSchema);
