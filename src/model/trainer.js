@@ -13,6 +13,7 @@ const trainerSchema = new Schema({
   team : [
     {
       pokemon: String,
+      lvl: Number
     }
   ],
 });

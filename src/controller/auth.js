@@ -30,8 +30,7 @@ class AuthController {
 
     // si l'utilisateur n'existe pas, on renvoie une erreur
     if (!user){
-      res.status(400).json({ message: "Invalid Email, Unknow Yser" })
-      return;
+      return res.status(400).json({ message: "Invalid Email, Unknow Yser" })
     }
 
     // si l'utilisateur existe, on compare les mots de passe
@@ -39,8 +38,7 @@ class AuthController {
 
     // si le mot de passe est invalide, on renvoie une erreur
     if (!isPasswordValid){
-      res.status(400).json({ message: "Invalid Password" })
-      return;
+      return res.status(400).json({ message: "Invalid Password" })
     }
 
     // sinon on genere un token

@@ -8,23 +8,21 @@ const router = express.Router();
 router.get("/", TrainerController.getAllTrainers);
 router.get("/:id", TrainerController.getTrainer);
 
-router.post("/", /* [
-    body("pokedexNumber").trim().isInt(),
-    body("generation").trim().isInt(),
+router.post("/",  [
+    body("age").trim().isInt(),
     body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
-    body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
+    body("team.*.lvl").trim().isInt(),
+    body("team.*.pokemon").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+    body("team").trim().optional().isArray({max: 6}),
 ] 
-, findErrors , */TrainerController.createTrainer);
+, findErrors , TrainerController.createTrainer);
 
-router.put("/:id",/* [
-    body("pokedexNumber").trim().isInt(),
-    body("generation").trim().isInt(),
+router.put("/:id", [
+    body("age").trim().isInt(),
+    body("team").trim().optional().isArray(),
     body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
-    body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-]
-, findErrors, */TrainerController.udpateTrainer)
+] 
+, findErrors, TrainerController.udpateTrainer)
 
 router.delete("/:id", TrainerController.deleteTrainer);
 

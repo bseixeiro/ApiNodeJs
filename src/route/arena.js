@@ -8,23 +8,23 @@ const router = express.Router();
 router.get("/", ArenaController.getAllArenas);
 router.get("/:id", ArenaController.getArena);
 
-router.post("/", /* [
-    body("pokedexNumber").trim().isInt(),
-    body("generation").trim().isInt(),
-    body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+router.post("/",  [
+    body("region").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+    body("city").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+    body("champion").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
+    body("badge").trim().isLength({ min: 2, max: 20 }).isAlpha(),
 ] 
-, findErrors , */ArenaController.createArena);
+, findErrors , ArenaController.createArena);
 
-router.put("/:id",/* [
-    body("pokedexNumber").trim().isInt(),
-    body("generation").trim().isInt(),
-    body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+router.put("/:id",[
+    body("region").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+    body("city").trim().isLength({ min: 2, max: 50 }).isAlpha(),
+    body("champion").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
+    body("badge").trim().isLength({ min: 2, max: 20 }).isAlpha(),
 ]
-, findErrors, */ArenaController.udpateArena)
+, findErrors , ArenaController.udpateArena)
 
 router.delete("/:id", ArenaController.deleteArena);
 

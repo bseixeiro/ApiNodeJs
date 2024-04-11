@@ -13,7 +13,7 @@ router.post("/", [
     body("generation").trim().isInt(),
     body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
+    body("secondType").trim().optional().isLength({ min: 2, max: 20 }).isAlpha(),
 ]
 , findErrors ,PokemonController.createPokemon);
 
@@ -22,7 +22,7 @@ router.put("/:id", [
     body("generation").trim().isInt(),
     body("name").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("mainType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
-    body("secondType").trim().isLength({ min: 2, max: 20 }).isAlpha(),
+    body("secondType").trim().optional().isLength({ min: 2, max: 20 }).isAlpha(),
 ]
 , findErrors, PokemonController.udpatePokemon)
 
