@@ -7,6 +7,21 @@ const swaggerDef = {
       version: "1.0.0",
       description:
         "This is an API about arenas of all game Pokemon"
+    },
+    servers: [
+        {
+          url: 'http://localhost:3000',
+          description: 'Development server',
+        },
+      ],
+    components:{
+        securitySchemes: {
+            BearerAuth:{
+                type: "http",
+                scheme: "bearer",
+                in: "header",
+            }
+        }
     }
 }
 

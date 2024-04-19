@@ -5,7 +5,7 @@ export default function isAuth(req, res, next) {
   const header = req.header("Authorization");
 
   if (!header){
-    return res.status(400).json({ message: "Abscence du Token d'authentification" });
+    return res.status(401).json({ message: "Unauthorized" });
   }
   // "Bearer token"
   const array = header.split(" ");
