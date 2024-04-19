@@ -1,6 +1,6 @@
 import express from "express";
 import swaggerUi from "swagger-ui-express"
-// import { handleUncaughtErrors } from "./Middlewares/error.js";
+import { handleUncaughtErrors } from "./middlewares/error.js";
 import specs from "./swagger.js";
 import routes from "./routes/index.js";
 
@@ -11,9 +11,8 @@ export function CreateApp() {
 
   app.use(express.json());
 
-  // file uploads middlware configuration
   app.use(routes);
 
-//   app.use(handleUncaughtErrors);
+  app.use(handleUncaughtErrors);
   return app;
 }

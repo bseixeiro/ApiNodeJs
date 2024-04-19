@@ -3,30 +3,38 @@ import Arena from "../models/arena.js";
 class ArenaController {
 
     static getAllArenas = (req, res) => {
-        Arena.find()
-            .then((result) => {
-                res.json(result);
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error(error);
-                // res.status(400).json({ message: error.message });
-            }
-            );
+        try {
+            Arena.find()
+                .then((result) => {
+                    res.json(result);
+                })
+                .catch((error) => {
+                    throw new Error(error);
+                }
+                );
+        }
+        catch (err) {
+            throw err
+        }
     };
 
     static getArena = (req, res) => {
         const id = req.params.id;
-        Arena.findById(id)
-          .then((result) => {
-            res.json(result);
-          })
-          .catch((error) => {
-            console.log(error);
-            throw new Error(error);
-            // res.status(400).json({ message: error.message });
-          });
-      };
+
+        try {
+            Arena.findById(id)
+                .then((result) => {
+                    res.json(result);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    throw new Error(error);
+                });
+        }
+        catch (err) {
+            throw err
+        }
+    };
 
     static createArena = (request, response) => {
         const bodyContent = request.body;
@@ -34,30 +42,39 @@ class ArenaController {
         const newArena = new Arena(bodyContent);
 
         // on sauvegarde la nouvelle instance de Arena
-        newArena
-            .save()
-            .then((result) => {
-                response.status(201).json(result);
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error(error);
-            });
+        try {
+            newArena
+                .save()
+                .then((result) => {
+                    response.status(201).json(result);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    throw new Error(error);
+                });
+        }
+        catch (err) {
+            throw err
+        }
 
     }
 
     static deleteArena = (request, response) => {
         const id = request.params.id;
 
-        Arena.deleteOne({ _id: id })
-            .then((result) => {
-                response.status(204).end();
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error(error);
-                // response.status(400).json({ message: error.message });
-            });
+        try {
+            Arena.deleteOne({ _id: id })
+                .then((result) => {
+                    response.status(204).end();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    throw new Error(error);
+                });
+        }
+        catch (err) {
+            throw err
+        }
     };
 
     static udpateArena = (request, response) => {
@@ -66,15 +83,19 @@ class ArenaController {
 
         const updatedArena = { _id: id, ...bodyContent }
 
-        Arena.updateOne({ _id: id }, updatedArena)
-            .then((result) => {
-                response.status(201).json(updatedCar);
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error(error);
-                // response.status(400).json({ message: error.message });
-            });
+        try {
+            Arena.updateOne({ _id: id }, updatedArena)
+                .then((result) => {
+                    response.status(201).json(updatedCar);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    throw new Error(error);
+                });
+        }
+        catch (err) {
+            throw err
+        }
     }
 };
 

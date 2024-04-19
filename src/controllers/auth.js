@@ -26,7 +26,12 @@ class AuthController {
   static signin = async (req, res, next) => {
     const { email, password } = req.body;
     // On cherche l'utilisateur dans la base de donnees
-    const user = await User.findOne({ email: email });
+    try{
+      const user = await User.findOne({ email: email });
+    }
+    catch(err){
+        throw err
+    }
 
     // si l'utilisateur n'existe pas, on renvoie une erreur
     if (!user){
@@ -34,7 +39,12 @@ class AuthController {
     }
 
     // si l'utilisateur existe, on compare les mots de passe
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    try{
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+    }
+    catch(err){
+        throw err
+    }
 
     // si le mot de passe est invalide, on renvoie une erreur
     if (!isPasswordValid){
@@ -42,11 +52,17 @@ class AuthController {
     }
 
     // sinon on genere un token
-    const token = jwt.sign(
-      { email: user.email, id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    try{
+      const token = jwt.sign(
+        { email: user.email, id: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+    }
+    catch(err){
+        throw err
+    }
+    
     // on renvoie le token
     res.status(200).json({ token });
   };
