@@ -1,7 +1,7 @@
 import express from "express";
-import TrainerController from "../controller/trainer.js";
+import TrainerController from "../controllers/trainer.js";
 import { body } from 'express-validator';
-import findErrors from "../middleware/validator.js";
+import findErrors from "../middlewares/validator.js";
 
 const router = express.Router();
 

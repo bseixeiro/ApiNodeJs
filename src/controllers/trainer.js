@@ -1,7 +1,7 @@
-import Trainer from "../model/trainer.js";
-import Controller from "./controller.js";
+import Trainer from "../models/trainer.js";
 
-class TrainerController extends Controller {
+
+class TrainerController {
 
     static getAllTrainers = (req, res) => {
         Trainer.find()

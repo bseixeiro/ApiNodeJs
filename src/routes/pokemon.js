@@ -1,7 +1,7 @@
 import express from "express";
-import PokemonController from "../controller/pokemon.js";
+import PokemonController from "../controllers/pokemon.js";
 import { body } from 'express-validator';
-import findErrors from "../middleware/validator.js";
+import findErrors from "../middlewares/validator.js";
 
 const router = express.Router();
 

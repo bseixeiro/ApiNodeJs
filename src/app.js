@@ -1,6 +1,6 @@
 import express from "express";
 // import { handleUncaughtErrors } from "./Middlewares/error.js";
-import routes from "./route/index.js";
+import routes from "./routes/index.js";
 
 export function CreateApp() {
   const app = express();

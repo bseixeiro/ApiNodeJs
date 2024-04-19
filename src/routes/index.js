@@ -3,7 +3,7 @@ import authRouter from "./auth.js";
 import pokemonRouter from "./pokemon.js";
 import trainerRouter from "./trainer.js";
 import arenaRouter from "./arena.js";
-import isAuth from "../middleware/auth.js";
+import isAuth from "../middlewares/auth.js";
 // import fileRouter from "./file.js";
 
 const router = Router();

@@ -1,7 +1,6 @@
-import Arena from "../model/arena.js";
-import Controller from "./controller.js";
+import Arena from "../models/arena.js";
 
-class ArenaController extends Controller {
+class ArenaController {
 
     static getAllArenas = (req, res) => {
         Arena.find()

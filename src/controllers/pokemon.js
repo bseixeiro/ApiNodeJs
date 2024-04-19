@@ -1,7 +1,6 @@
-import Pokemon from "../model/pokemon.js";
-import Controller from "./controller.js";
+import Pokemon from "../models/pokemon.js";
 
-class PokemonController extends Controller {
+class PokemonController {
 
     static getAllPokemons = (req, res) => {
         Pokemon.find()
