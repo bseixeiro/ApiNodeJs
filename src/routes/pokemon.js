@@ -5,7 +5,14 @@ import findErrors from "../middlewares/validator.js";
 
 const router = express.Router();
 
+/** 
+ * @swagger
+ * /pokemon:
+ *  get:
+ *      description: Get All Pokemon.
+*/
 router.get("/", PokemonController.getAllPokemons);
+
 router.get("/:id", PokemonController.getPokemon);
 
 router.post("/", [
