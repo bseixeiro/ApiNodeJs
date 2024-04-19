@@ -11,33 +11,31 @@ const router = express.Router();
  *   get:
  *     security: 
 *          - BearerAuth: []
- *     summary: Retrieve a list of JSONPlaceholder users.
- *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
- *     responses:
- *       200:
- *         description: A list of users.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         description: The user ID.
- *                         example: 0
- *                       name:
- *                         type: string
- *                         description: The user's name.
- *                         example: Leanne Graham
+ *     summary: Récupérer l'ensemble des arènes.
+ *     description: Récupérer l'ensemble des arènes. Vous nécessitez d'être authentifié.
  */
 router.get("/", ArenaController.getAllArenas);
+
+/**
+ * @swagger
+ * /arena/{id}:
+ *   get:
+ *     security: 
+*          - BearerAuth: []
+ *     summary: Récupérer une arène via son identifiant.
+ *     description: Récupérer une arène via son identifiant. Vous nécessitez d'être authentifié.
+ */
 router.get("/:id", ArenaController.getArena);
 
+/**
+ * @swagger
+ * /arena:
+ *   post:
+ *     security: 
+*          - BearerAuth: []
+ *     summary: Ajouter une arène.
+ *     description: Ajouter une arène. Vous nécessitez d'être authentifié.
+ */
 router.post("/",  [
     body("region").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("city").trim().isLength({ min: 2, max: 50 }).isAlpha(),
@@ -47,6 +45,15 @@ router.post("/",  [
 ] 
 , findErrors , ArenaController.createArena);
 
+/**
+ * @swagger
+ * /arena/{id}:
+ *   put:
+ *     security: 
+*          - BearerAuth: []
+ *     summary: Modifier une arène via son identifiant.
+ *     description: Modifier une arène via son identifiant. Vous nécessitez d'être authentifié.
+ */
 router.put("/:id",[
     body("region").trim().isLength({ min: 2, max: 50 }).isAlpha(),
     body("city").trim().isLength({ min: 2, max: 50 }).isAlpha(),
@@ -56,6 +63,15 @@ router.put("/:id",[
 ]
 , findErrors , ArenaController.udpateArena)
 
+/**
+ * @swagger
+ * /arena/{id}:
+ *   delete:
+ *     security: 
+*          - BearerAuth: []
+ *     summary: Supprimer une arène via son identifiant.
+ *     description: Supprimer une arène via son identifiant. Vous nécessitez d'être authentifié.
+ */
 router.delete("/:id", ArenaController.deleteArena);
 
 export default router;
